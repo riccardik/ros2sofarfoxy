@@ -26,7 +26,7 @@ class MinimalSubscriber(Node):
         #self.subscription = self.create_subscription(  SensM.JointState,"/robot/joint_states",self.listener_callback,            10)    
         
         self.sub_2 = self.create_subscription(  Point,"/left_endpoint_pos",self.endpoint_callback,            10)  
-        # prevent unused variable warninga
+        # prevent unused variable warning
         self.subscription = self.create_subscription(  String,"/ik_result",self.ik_res_callback,            10)        
     def ik_res_callback(self, msg):
         print(msg)
