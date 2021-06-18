@@ -15,10 +15,10 @@ class MinimalPublisher(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(Point, 'position_sub', 1)
+        self.publisher_ = self.create_publisher(Point, '/coke_can_coords', 1)
         timer_period = 3  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.subscription = self.create_subscription(  String,"/ik_result",self.ik_res_callback,            1)
+        #self.subscription = self.create_subscription(  String,"/ik_result",self.ik_res_callback,            1)
         self.i = 0
 
     def ik_res_callback(self, msg):

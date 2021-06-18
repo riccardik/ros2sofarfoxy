@@ -11,3 +11,15 @@ run:
 build the package and run the listener:
     colcon build --packages-select examples_rclpy_minimal_subscriber
     ros2 run examples_rclpy_minimal_subscriber subscriber
+
+send point coords to ros1
+    ros2 run examples_rclpy_minimal_subscriber publisher
+
+build only one package
+    colcon build --packages-select examples_rclpy_minimal_subscriber
+
+move coke can
+    ros2 run examples_rclpy_minimal_subscriber move_coke
+
+
+    colcon build --packages-select gazebo_msgs

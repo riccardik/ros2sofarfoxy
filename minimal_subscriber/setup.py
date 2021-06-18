@@ -34,6 +34,7 @@ setup(
             'subscriber_lambda = examples_rclpy_minimal_subscriber.subscriber_lambda:main',
             'subscriber = examples_rclpy_minimal_subscriber.subscriber_member_function:main',
             'publisher = examples_rclpy_minimal_subscriber.publisher_point:main',
+            'move_coke = examples_rclpy_minimal_subscriber.move_coke:main',
             
         ],
     },
