@@ -9,6 +9,7 @@ run:
     ros2 run ros1_bridge dynamic_bridge
 
 build the package and run the listener:
+
     colcon build --packages-select examples_rclpy_minimal_subscriber
     ros2 run examples_rclpy_minimal_subscriber subscriber
 
