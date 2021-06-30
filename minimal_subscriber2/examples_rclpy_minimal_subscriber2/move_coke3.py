@@ -1,10 +1,8 @@
 import rclpy
 from rclpy.node import Node
 import time
-#import roslib
 
 from std_msgs.msg import String
-#from gazebo_msgs.msg import ModelState
 
 
 from geometry_msgs.msg import (
@@ -12,20 +10,19 @@ from geometry_msgs.msg import (
     Pose,
     Point,
     Quaternion,
-) 
+)
 class MinimalPublisher(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
-        #self.publisher_ = self.create_publisher(ModelState, '/gazebo/set_model_state', 1)
         self.publisher_ = self.create_publisher(Point, '/coke_can_coords', 1)
-         
         timer_period = 3  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         #self.subscription = self.create_subscription(  String,"/ik_result",self.ik_res_callback,            1)
         self.i = 0
 
-    
+    def ik_res_callback(self, msg):
+        print("ik_solver_response = ",msg.data)
     def timer_callback(self):
         msg = Point()
         print("insert x")

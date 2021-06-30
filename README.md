@@ -7,7 +7,7 @@ add to `/etc/hosts`: `IP_ADDRESS   COMPUTER_NAME` of the ros1 pc
 
 build the packages:
     
-    colcon build --packages-select examples_rclpy_minimal_subscriber
+    colcon build --packages-select examples_rclpy_minimal_subscriber2
     colcon build --packages-select gazebo_msgs
 
 run:
@@ -18,7 +18,7 @@ run:
 
 run the listener on a new terminal windows (optional):
 
-    ros2 run examples_rclpy_minimal_subscriber subscriber
+    ros2 run examples_rclpy_minimal_subscriber2 subscriber
 
 
 ## Run 
@@ -26,11 +26,11 @@ on new terminal window run:
 
 script to send point coords to ros1 (the coordinate of the desired position for the baster's left end effector)
 
-    ros2 run examples_rclpy_minimal_subscriber publisher
+    ros2 run examples_rclpy_minimal_subscriber2 publisher
 
 script to move the coke can model in the ros1 gazebo simulation
 
-    ros2 run examples_rclpy_minimal_subscriber move_coke
+    ros2 run examples_rclpy_minimal_subscriber2 move_coke
 
 
     
