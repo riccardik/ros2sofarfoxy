@@ -2,7 +2,7 @@
 ## setup bridge
 
 (on the ros2 pc) 
-add to `/etc/hosts: IP_ADDRESS   COMPUTER_NAME` of the ros1 pc
+add to `/etc/hosts`: `IP_ADDRESS   COMPUTER_NAME` of the ros1 pc
 (the same but inverse on the ros1 pc)
 
 run:
