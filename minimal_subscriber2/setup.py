@@ -35,6 +35,7 @@ setup(
             'publisher = examples_rclpy_minimal_subscriber2.publisher_point:main',
             'move_coke = examples_rclpy_minimal_subscriber2.move_coke:main',
             'move_coke2 = examples_rclpy_minimal_subscriber2.prova1:main',
+            'state_machine = examples_rclpy_minimal_subscriber2.publisher_point_sm:main',
             
         ],
     },
