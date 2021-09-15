@@ -16,13 +16,20 @@ def generate_launch_description():
         ),
         Node(
             package='examples_rclpy_minimal_subscriber2',
-            executable='publisher',
-            name='send_position', output='screen'
-        ),
-        Node(
-            package='examples_rclpy_minimal_subscriber2',
-            executable='subscriber',
-            name='send_position', output='screen'
-        ),
+            executable='state_machine',
+            name='state_machine', output='screen'
+        ), 
         
     ])
+
+
+    """  Node(
+        package='examples_rclpy_minimal_subscriber2',
+        executable='publisher',
+        name='send_position', output='screen'
+    ),
+    Node(
+        package='examples_rclpy_minimal_subscriber2',
+        executable='subscriber',
+        name='send_position', output='screen'
+    ), """
