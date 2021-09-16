@@ -50,4 +50,27 @@ z: 0"
 
     ros2 topic pub /state_mobrob std_msgs/msg/Int32 "data: 1"
 
+### Avviare se non funziona il launchfile   
+
+Terminale 1, la macchina a stati:
+    source ~/ros2-ws/install/setup.bash
+    ros2 run examples_rclpy_minimal_subscriber2 state_machine
+
+Terminale 2, publisher della posizione continuo
+
+    source ~/ros2-ws/install/setup.bash
+    ros2 pub position_toreach geometry_msgs/msg/Point "x: 0.5 y: 0.5 z: 0.5"
+
+Terminale 3, publisher dello stato (1 fa graspare baxter)
+
+    source ~/ros2-ws/install/setup.bash
+    ros2 topic pub /state_mobrob std_msgs/msg/Int32 "data: 1"
+
+
+Terminale 4, subscriber della posizione dell'ee di baxter
+
+    source ~/ros2-ws/install/setup.bash
+    ros2 topic sub /position_sub  geometry_msgs/msg/Point 
+
+
     
