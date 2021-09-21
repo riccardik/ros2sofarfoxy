@@ -1,17 +1,19 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
-  <name>examples_rclpy_minimal_subscriber</name>
-  <version>0.9.4</version>
-  <description>Examples of minimal subscribers using rclpy.</description>
-  <maintainer email="sloretz@openrobotics.org">Shane Loretz</maintainer>
+  <name>banxter_bridge</name>
+  <version>0.0.1</version>
+  <description>Package to support the Banxter assignment.</description>
+  <maintainer email="mail@mail.org">Riccardo Lastrico</maintainer>
   <license>Apache License 2.0</license>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
 <!--   <build_depend>gazebo_msgs</build_depend>
   <exec_depend>gazebo_msgs</exec_depend> -->
-  
+  <build_depend>baxter_core_msgs</build_depend>
+  <exec_depend>baxter_core_msgs</exec_depend>
+
 
   <!-- These test dependencies are optional
   Their purpose is to make sure that the code passes the linters -->
@@ -22,5 +24,6 @@
 
   <export>
     <build_type>ament_python</build_type>
+    <ros1_bridge mapping_rules="my_mapping_rules.yaml"/>
   </export>
 </package>

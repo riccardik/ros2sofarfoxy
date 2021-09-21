@@ -285,3 +285,6 @@ install(
   DIRECTORY resource
   DESTINATION share/${PROJECT_NAME}
 )
+install(
+  FILES my_mapping_rules.yaml
+  DESTINATION share/${PROJECT_NAME})
