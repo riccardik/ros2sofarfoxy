@@ -26,6 +26,11 @@ def generate_launch_description():
             executable='state_machine',
             name='state_machine', output='screen'
         ), 
+        Node(
+            package='banxter_bridge',
+            executable='client_gazebo_state',
+            name='republish_cancoord', output='screen'
+        ), 
 
 
     ])

@@ -48,9 +48,19 @@ Is possible to run the package launching the single nodes or by using a launch f
 Is possible to use a launch file to avoid using multiple terminal windows:
     
     export ROS_MASTER_URI=http://192.168.1.195:11311 
+    export ROS_MASTER_URI=http://130.251.13.118:11311 
     source ~/ros2-ws/install/setup.bash #(path of the ros2 ws)
     cd ~/ros2-ws/src/bridge_statem/launch
     ros2 launch launch.py 
+
+Launch the gazebo simulation
+
+    export GAZEBO_MODEL_PATH=/home/rick/ros2-ws/src/bridge_statem/models/:$GAZEBO_MODEL_PATH
+
+    source ~/ros2-ws/install/setup.bash 
+    cd ~/ros2-ws/src/bridge_statem/launch
+    ros2 launch gazebo.launch.py 
+
 
 ## Using the package
 The package allows to communicate from a ROS2 instance to a ROS1 instance, running on another pc (or in a virtual machine) to send commands directed to the simulation of a Baxter robot (running on ROS1 using Gazebo).
