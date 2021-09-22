@@ -72,7 +72,7 @@ This package will offer the support as a bridge between the two simulation, the 
 ### The state machine
 The state machine is a very simple implementation, it allow for two possible states:
 - `0` : the mobile robot is still moving towards the goal. The state machine will communicate to Ros1 the relative position of the coke can with respect to the Baxter robot.
-- `1` : the mobile robot is arrived to the goal. The state machine will communicate to the Baxter robot in Ros1 to reach the last received position of the Coke can.
+- `1` : the mobile robot is arrived to the goal. When the transition from `0` to `1` happens, the state machine will communicate to the Baxter robot in Ros1 to reach the last received position of the Coke can.
 
 ### Publish on the position topic:
 In this topic the position of coke can with respect to the mobile robot will be published:
