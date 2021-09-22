@@ -66,7 +66,7 @@ def generate_launch_description():
             description='Set "true" to output version information'
         ),
         DeclareLaunchArgument(
-            'verbose', default_value='false',
+            'verbose', default_value='true',
             description='Set "true" to increase messages written to terminal'
         ),
         DeclareLaunchArgument(

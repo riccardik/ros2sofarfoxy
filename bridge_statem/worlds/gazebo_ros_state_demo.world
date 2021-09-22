@@ -54,8 +54,24 @@
     <include>
       <uri>model://sun</uri>
     </include>
+   
 
-    <model name='boxes'>
+    <model name="coke_can2">
+       <include>
+    <uri>model://coke_can2</uri>
+
+    </include>
+    </model>
+
+
+    <model name="coke_can3">
+       <include>
+    <uri>model://coke_can2</uri>
+
+    </include>
+    </model>
+
+ <!--     <model name='boxes'>
       <pose>0 0 0.5 0 0 0</pose>
 
       <link name='bottom'>
@@ -93,7 +109,8 @@
         </collision>
       </link>
 
-    </model>
+    </model>  -->
+    
   </world>
 </sdf>
 
