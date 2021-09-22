@@ -77,8 +77,14 @@ In this topic the state of the robot will be published
 
     ros2 topic pub /state_mobrob std_msgs/msg/Int32 "data: 1"
 
+## Spawn coke model on gazebo
+In a terminal window launch gazebo
 
+    ros2 launch gazebo_ros gazebo.launch.py
 
+In a new terminal window call the model spawn
+
+    ros2 run gazebo_ros spawn_entity.py -entity coke_can2 -x 0 -y 0 -z 0 -file /home/rick/ros2-ws/src/bridge_statem/models/coke_can2/model.sdf
 
 
 
