@@ -4,6 +4,10 @@ import time
 
 from std_msgs.msg import String, Int32
 
+import sys
+
+from gazebo_msgs.srv import GetEntityState
+
 
 from geometry_msgs.msg import (
     PoseStamped,

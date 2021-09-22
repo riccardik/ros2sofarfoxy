@@ -87,8 +87,8 @@ In a new terminal window call the model spawn
     ros2 run gazebo_ros spawn_entity.py -entity coke_can2 -x 0 -y 0 -z 0 -file /home/rick/ros2-ws/src/bridge_statem/models/coke_can2/model.sdf
 
 
-
-
+export GAZEBO_MODEL_PATH=/home/rick/ros2-ws/src/bridge_statem/models/coke_can2:$GAZEBO_MODEL_PATH
+export GAZEBO_MODEL_PATH=/home/rick/ros2-ws/src/bridge_statem/models/:$GAZEBO_MODEL_PATH
 
 
 

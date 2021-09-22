@@ -56,7 +56,7 @@
     </include>
    
 
-    <model name="coke_can2">
+    <model name="coke_can_robot">
        <include>
     <uri>model://coke_can2</uri>
 
@@ -64,7 +64,7 @@
     </model>
 
 
-    <model name="coke_can3">
+    <model name="coke_can">
        <include>
     <uri>model://coke_can2</uri>
 

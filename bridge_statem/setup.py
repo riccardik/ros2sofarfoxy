@@ -37,7 +37,9 @@ setup(
             'move_coke2 = banxter_bridge.prova1:main',
             'state_machine = banxter_bridge.publisher_point_sm:main',
             'subscriber_state = banxter_bridge.subscriber_state:main',
+            'client_gazebo_state = banxter_bridge.repub_pos:main',
             
         ],
     },
 )
+
