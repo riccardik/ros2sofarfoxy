@@ -12,7 +12,7 @@ from geometry_msgs.msg import (
     Quaternion,
 )
 
-class MinimalPublisher(Node):
+class     StateMachine(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
@@ -67,14 +67,14 @@ class MinimalPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher()
+    statem = StateMachine()
 
-    rclpy.spin(minimal_publisher)
+    rclpy.spin(statem)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
+    statem.destroy_node()
     rclpy.shutdown()
 
 

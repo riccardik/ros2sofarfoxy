@@ -147,7 +147,8 @@ On the Ros1 pc launch the Baster's simulation, then aunch the main launch file:
     z: 0" 
 
 We can then send another command to the Ros1 simulation: this will move the Baxter's left end effector's position:
-    ource ~/ros2-ws/install/setup.bash
+
+    source ~/ros2-ws/install/setup.bash
     ros2 topic pub '/position_sub geometry_msgs/msg/Point "x: 0.5 
     y: 0.5
     z: 0" 
@@ -157,11 +158,13 @@ We can then send another command to the Ros1 simulation: this will move the Baxt
 
 This package offers a Gazebo simulation to test if the package is working correctly.
 The following command will launch a Gazebo simulation that will contain two cans of coke 's model, named `coke_can_robot` that will simulate the frame of the mobile robot that is navigating the environment and `coke_can` that will simulate the position of the end goal.
+
     export GAZEBO_MODEL_PATH=/home/rick/ros2-ws/src/bridge_statem/models/:$GAZEBO_MODEL_PATH
     source ~/ros2-ws/install/setup.bash 
     cd ~/ros2-ws/src/bridge_statem/launch
     ros2 launch gazebo.launch.py 
+
 Then launch the main launch file, to initialize the necessary nodes:
-    
+
 
 The package will compute continously the relative position of the `coke_can` to the robot: this position is the one that will be published on the Ros1 simulation as the position for the model of coke and, in the end, as goal position for the end effector when the mobile robot has stopped.
