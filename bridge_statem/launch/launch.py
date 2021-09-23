@@ -16,10 +16,8 @@ def generate_launch_description():
         Node(
             package='ros1_bridge',
             executable='dynamic_bridge',
-            parameters=[{
-                "bridge-all-topics": '',
-            }],
-            name='bridge_ros1', output='screen'
+            
+            name='bridge_ros1'
         ),
         Node(
             package='banxter_bridge',
@@ -29,13 +27,17 @@ def generate_launch_description():
         Node(
             package='banxter_bridge',
             executable='client_gazebo_state',
-            name='republish_cancoord', output='screen'
+            name='republish_cancoord'
         ), 
+        
 
 
     ])
+    
 
-
+    """ parameters=[{
+                "bridge-all-topics": '',
+            }], """
     """  Node(
         package='examples_rclpy_minimal_subscriber2',
         executable='publisher',

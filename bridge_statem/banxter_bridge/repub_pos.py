@@ -19,7 +19,8 @@ class MinimalClientAsync(Node):
         super().__init__('minimal_client_async')
         self.cli = self.create_client(GetEntityState, '/spwnd_obj/get_entity_state')
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+            pass
+            #self.get_logger().info('service not available, waitain.')
         self.req = GetEntityState.Request()
         self.publisher_pos = self.create_publisher(Point, '/position_toreach', 1)
 
@@ -48,13 +49,14 @@ def main(args=None):
                 try:
                     response = minimal_client.future.result()
                 except Exception as e:
-                    minimal_client.get_logger().info(
-                        'Service call failed %r' % (e,))
+                    pass
+                    #minimal_client.get_logger().info(   'Service call failed %r' % (e,))
                 else:
                     """minimal_client.get_logger().info(
                         'Result of add_two_ints: for %d + %d = %d' %
                         (minimal_client.req.a, minimal_client.req.b, response.sum)) """
-                    print(response)
+                    #print(response)
+                    print(response.state.pose.position)
                     minimal_client.publisher_pos.publish(response.state.pose.position)
                     time.sleep(1)
                 break

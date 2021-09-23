@@ -11,7 +11,7 @@ from geometry_msgs.msg import (
     Point,
     Quaternion,
 )
-
+position_can = Point()
 class     StateMachine(Node):
 
     def __init__(self):
@@ -26,12 +26,14 @@ class     StateMachine(Node):
         self.i = 0
         self.state = 0
         self.prev_state = 0
-        self.position = Point()
+        self.prev_pos = Point()
+        
 
 
     def ik_res_callback(self, msg):
         print("ik_solver_response = ",msg.data)
     def state_mobrob_callback(self, msg):
+        global position_can
         self.prev_state = self.state
         self.state = msg.data
         if self.state!= self.prev_state:
@@ -39,12 +41,14 @@ class     StateMachine(Node):
             #if state = 1 stop and reach it
             if self.state == 1:
                 time.sleep(1)
-                self.pub_point_.publish(self.position)
+                self.pub_point_.publish(position_can)
                 
     def pos_callback(self, msg):
         print("received_pos = ",msg)
-        self.position = msg
-        self.publisher_coke.publish(msg)
+        global position_can
+        if msg!=position_can:
+            position_can = msg
+            self.publisher_coke.publish(msg)
         
 
 
