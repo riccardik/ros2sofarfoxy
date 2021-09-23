@@ -16,7 +16,7 @@ This package will make use of the `ros1_bridge` package: to use it, is necessary
 - on the Ros2 pc, add the ones of the Ros1 pc
 
 ## Build the packages
-build the packages (i will assume `~/ros2-ws/` as thhe Current Ros2 workspace):
+build the packages (i will assume `~/ros2-ws/` as the Current Ros2 workspace):
     
     source ~/ros2-ws/install/setup.bash 
     cd  ~/ros2-ws/
