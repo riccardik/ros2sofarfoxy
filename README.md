@@ -4,27 +4,29 @@ BANXTER PROJECT - SOFAR - Robotics Engineering UNIGE
 - Ubuntu 20.04 x64 (https://releases.ubuntu.com/20.04/)
 - Ros1 Noetic (http://wiki.ros.org/noetic/Installation/Ubuntu, necessary to use the bridge)
 - Ros2 Foxy (https://docs.ros.org/en/foxy/Installation.html)
-- ros1_bridge-foxy (ros1 bridge, included in the repository, https://github.com/ros2/ros1_bridge/blob/master/README.md)
+- ros1_bridge-foxy (ros1 bridge, included in the repository but with the `colcon_build` disabled for that package, https://github.com/ros2/ros1_bridge/blob/master/README.md)
 
-    sudo apt install ros-foxy-ros1-bridge
+        sudo apt install ros-foxy-ros1-bridge
 
 - baxter_common_ros2 (port of baxter messages for ros2, included, https://github.com/CentraleNantesRobotics/baxter_common_ros2)
-## Setup and build the package
-### Setup bridge
-(on the ros2 pc) 
-add to `/etc/hosts`: `IP_ADDRESS   COMPUTER_NAME` of the ros1 pc
-(the same but inverse on the ros1 pc)
 
-build the packages:
+## Configuration
+This package will make use of the `ros1_bridge` package: to use it, is necessary to configure the host file of both the PC's that are running Ros1 and Ros2:
+- on the Ros1 pc, open `/etc/hosts` with a text editor and add the following line: `IP_ADDRESS   COMPUTER_NAME`, where the IP address and the computer name are the ones of the Ros2 computer.
+- on the Ros2 pc, add the ones of the Ros1 pc
+
+## Build the packages
+build the packages (i will assume `~/ros2-ws/` as thhe Current Ros2 workspace):
     
     source ~/ros2-ws/install/setup.bash 
     cd  ~/ros2-ws/
     colcon build --symlink-install
     colcon build --packages-select banxter_bridge
     colcon build --packages-select gazebo_msgs
+
 ## Run the package
 Is possible to run the package launching the single nodes or by using a launch file.
-### Run single nodesl
+### Run the single nodes
 - Run the bridge and the state machine:
 
     Run the single nodes:
@@ -47,7 +49,7 @@ Is possible to run the package launching the single nodes or by using a launch f
 ### Run the Launch file
 Is possible to use a launch file to avoid using multiple terminal windows:
     
-    export ROS_MASTER_URI=http://192.168.1.195:11311 
+    export ROS_MASTER_URI=http://192.168.1.195:11311 #IP of the Ros1 machine
     export ROS_MASTER_URI=http://130.251.13.118:11311 
     source ~/ros2-ws/install/setup.bash #(path of the ros2 ws)
     cd ~/ros2-ws/src/bridge_statem/launch
@@ -101,29 +103,31 @@ In a new terminal window call the model spawn
 
 
 
+## Testing
+Is possible to launch all the node separately for testing purposes.
 
-### Avviare se non funziona il launchfile   
+### Testing the state machine
 
-Terminale 1, la macchina a stati:
+Terminal 1, the finite state machine:
 
     source ~/ros2-ws/install/setup.bash
     ros2 run banxter_bridge state_machine
 
-Terminale 2, publisher della posizione continuo
+Terminale2, publishing the point destination for the coke can model, it will move in the Ros1 simulation if it was running
 
     source ~/ros2-ws/install/setup.bash
     ros2 pub position_toreach geometry_msgs/msg/Point "x: 0.5 y: 0.5 z: 0.5"
 
-Terminale 3, publisher dello stato (1 fa graspare baxter)
+Terminal 3, publishing the state of the mobile robot to the state machine
 
     source ~/ros2-ws/install/setup.bash
     ros2 topic pub /state_mobrob std_msgs/msg/Int32 "data: 1"
 
 
-Terminale 4, subscriber della posizione dell'ee di baxter
+Terminal 4, it will visualize the output of the state machine, this topic will be then passed to the Ros1 simulation and will contain the goal for the left end effector 
 
     source ~/ros2-ws/install/setup.bash
     ros2 topic sub /position_sub  geometry_msgs/msg/Point 
 
+### Testing the bridge
 
-    
