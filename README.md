@@ -72,7 +72,7 @@ This package allows the position control of a 3D model (in this case a coke can)
 This package will offer the support as a bridge between the two simulation, the mobile robot will publish its position in the environment, the position of the coke can relative to it will be comoputed and sent to ROS1. When the robot will reach the desired position, the state machine will change state and it will send a command to Baxter to reach the Coke can with its left end-effector(it is a model without physics and collision, just a placeholder to better visualize the goal).
 
 ### The state machine
-The state machine is a very simple implementation, it allow for two possible states:
+The state machine has a very simple implementation, it allow for two possible states:
 - `0` : the mobile robot is still moving towards the goal. The state machine will communicate to Ros1 the relative position of the coke can with respect to the Baxter robot.
 - `1` : the mobile robot is arrived to the goal. When the transition from `0` to `1` happens, the state machine will communicate to the Baxter robot in Ros1 to reach the last received position of the Coke can.
 
