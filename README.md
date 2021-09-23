@@ -71,11 +71,22 @@ This package allows the position control of a 3D model (in this case a coke can)
 
 This package will offer the support as a bridge between the two simulation, the mobile robot will publish its position in the environment, the position of the coke can relative to it will be comoputed and sent to ROS1. When the robot will reach the desired position, the state machine will change state and it will send a command to Baxter to reach the Coke can with its left end-effector(it is a model without physics and collision, just a placeholder to better visualize the goal).
 
+
 ### The state machine
 The state machine has a very simple implementation, it allow for two possible states:
 - `0` : the mobile robot is still moving towards the goal. The state machine will communicate to Ros1 the relative position of the coke can with respect to the Baxter robot.
 - `1` : the mobile robot is arrived to the goal. When the transition from `0` to `1` happens, the state machine will communicate to the Baxter robot in Ros1 to reach the last received position of the Coke can.
 
+### 
+
+
+
+
+
+
+
+## Testing
+Is possible to launch all the node separately for testing purposes.
 ### Publish on the position topic:
 In this topic the position of coke can with respect to the mobile robot will be published:
 
@@ -83,7 +94,6 @@ In this topic the position of coke can with respect to the mobile robot will be 
     ros2 topic pub /position_toreach geometry_msgs/msg/Point "x: 0.5 
     y: 0.5
     z: 0" 
-
 ### Publish on the state topic:
 In this topic the state of the robot will be published
 
@@ -98,14 +108,6 @@ In a new terminal window call the model spawn
 
     ros2 run gazebo_ros spawn_entity.py -entity coke_can2 -x 0 -y 0 -z 0 -file /home/rick/ros2-ws/src/bridge_statem/models/coke_can2/model.sdf
 
-
-
-
-
-
-## Testing
-Is possible to launch all the node separately for testing purposes.
-
 ### Testing the state machine
 
 Terminal 1, the finite state machine:
@@ -113,7 +115,7 @@ Terminal 1, the finite state machine:
     source ~/ros2-ws/install/setup.bash
     ros2 run banxter_bridge state_machine
 
-Terminale2, publishing the point destination for the coke can model, it will move in the Ros1 simulation if it was running
+Terminal 2, publishing the point destination for the coke can model, it will move in the Ros1 simulation if it was running
 
     source ~/ros2-ws/install/setup.bash
     ros2 pub position_toreach geometry_msgs/msg/Point "x: 0.5 y: 0.5 z: 0.5"
@@ -130,4 +132,36 @@ Terminal 4, it will visualize the output of the state machine, this topic will b
     ros2 topic sub /position_sub  geometry_msgs/msg/Point 
 
 ### Testing the bridge
+On the Ros1 pc launch the Baster's simulation, then aunch the main launch file:
 
+    export ROS_MASTER_URI=http://192.168.1.195:11311
+    source ~/ros2-ws/install/setup.bash #(path of the ros2 ws)
+    cd ~/ros2-ws/src/bridge_statem/launch
+    ros2 launch launch.py 
+ This launch file will also run the Bridge between Ros1 and Ros2.
+ To test that the bridge is actually working is possible to publish the command to move the coke can in the Ros1 simulation:
+
+    source ~/ros2-ws/install/setup.bash
+    ros2 topic pub '/coke_can_coords geometry_msgs/msg/Point "x: 0.5 
+    y: 0.5
+    z: 0" 
+
+We can then send another command to the Ros1 simulation: this will move the Baxter's left end effector's position:
+    ource ~/ros2-ws/install/setup.bash
+    ros2 topic pub '/position_sub geometry_msgs/msg/Point "x: 0.5 
+    y: 0.5
+    z: 0" 
+
+
+## Testing the full package
+
+This package offers a Gazebo simulation to test if the package is working correctly.
+The following command will launch a Gazebo simulation that will contain two cans of coke 's model, named `coke_can_robot` that will simulate the frame of the mobile robot that is navigating the environment and `coke_can` that will simulate the position of the end goal.
+    export GAZEBO_MODEL_PATH=/home/rick/ros2-ws/src/bridge_statem/models/:$GAZEBO_MODEL_PATH
+    source ~/ros2-ws/install/setup.bash 
+    cd ~/ros2-ws/src/bridge_statem/launch
+    ros2 launch gazebo.launch.py 
+Then launch the main launch file, to initialize the necessary nodes:
+    
+
+The package will compute continously the relative position of the `coke_can` to the robot: this position is the one that will be published on the Ros1 simulation as the position for the model of coke and, in the end, as goal position for the end effector when the mobile robot has stopped.
