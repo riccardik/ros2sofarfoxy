@@ -9,6 +9,9 @@ BANXTER PROJECT - SOFAR - Robotics Engineering UNIGE
         sudo apt install ros-foxy-ros1-bridge
 
 - baxter_common_ros2 (port of baxter messages for ros2, included, https://github.com/CentraleNantesRobotics/baxter_common_ros2)
+- gazebo_ros_pkgs 
+
+        sudo apt install ros-foxy-gazebo-ros*
 
 ## Configuration
 This package will make use of the `ros1_bridge` package: to use it, is necessary to configure the host file of both the PC's that are running Ros1 and Ros2:
