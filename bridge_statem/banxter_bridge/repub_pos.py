@@ -11,7 +11,15 @@ from geometry_msgs.msg import (
 import rclpy
 from rclpy.node import Node
 import time
+"""
+        This node will check for the relative position between the robot and the coke an and will republish it for ros2 as a geometry_msgs.msg/Point.
 
+        here is necessary to set the correct name of the two frames
+
+                self.req.name = "coke_can"
+                self.req.reference_frame="coke_can_robot"
+        
+        """
 
 class MinimalClientAsync(Node):
 
@@ -58,7 +66,7 @@ def main(args=None):
                     #print(response)
                     print(response.state.pose.position)
                     minimal_client.publisher_pos.publish(response.state.pose.position)
-                    time.sleep(1)
+                    time.sleep(0.2)
                 break
 
     minimal_client.destroy_node()

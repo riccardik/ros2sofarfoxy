@@ -29,12 +29,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'subscriber_old_school = banxter_bridge.subscriber_old_school:main',
-            'subscriber_lambda = banxter_bridge.subscriber_lambda:main',
+            
             'subscriber = banxter_bridge.subscriber_member_function:main',
             'publisher = banxter_bridge.publisher_point:main',
             'move_coke = banxter_bridge.move_coke:main',
-            'move_coke2 = banxter_bridge.prova1:main',
             'state_machine = banxter_bridge.publisher_point_sm:main',
             'subscriber_state = banxter_bridge.subscriber_state:main',
             'client_gazebo_state = banxter_bridge.repub_pos:main',

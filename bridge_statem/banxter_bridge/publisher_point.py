@@ -11,6 +11,10 @@ from geometry_msgs.msg import (
     Point,
     Quaternion,
 )
+"""
+Test node to see if the goal position to the end effector is correctly sent and received in Ros1
+        
+    """
 class MinimalPublisher(Node):
 
     def __init__(self):

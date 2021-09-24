@@ -18,6 +18,9 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import sensor_msgs.msg as SensM
 from geometry_msgs.msg import Point
+"""
+Node used to receive topics from Ros1
+"""
 
 class MinimalSubscriber(Node):
 

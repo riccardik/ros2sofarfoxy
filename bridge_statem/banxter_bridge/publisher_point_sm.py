@@ -11,11 +11,19 @@ from geometry_msgs.msg import (
     Point,
     Quaternion,
 )
+
+
+"""
+
+     This state machine will communicate to ROS1 the coordinates to whihc the can of coke has to be moved 
+     If the states goes from 0 to 1, the last received coordinate is being published to Ros1 as the goal for the end effector
+        
+"""
 position_can = Point()
 class     StateMachine(Node):
 
     def __init__(self):
-        super().__init__('minimal_publisher')
+        super().__init__('state_m')
         self.sub_pos = self.create_subscription(Point, 'position_toreach',self.pos_callback,            1)
         self.pub_point_ = self.create_publisher(Point, 'position_sub', 1)
         timer_period = 3  # seconds

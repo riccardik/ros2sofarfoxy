@@ -27,6 +27,10 @@ class MinimalPublisher(Node):
 
     
     def timer_callback(self):
+        """
+        This function will allow the user to input the desired coordinates for the coke's model
+        
+        """
         msg = Point()
         print("insert x")
         msg.x=float(input())
